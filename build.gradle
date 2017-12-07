@@ -1,0 +1,38 @@
+buildscript {
+    ext {
+        springBootVersion = '1.5.9.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-security')
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'io.jsonwebtoken:jjwt:0.7.0'
+//    compile group: 'com.auth0', name: 'java-jwt', version: '3.2.0'
+    compile group: 'org.json', name: 'json', version: '20160810'
+    compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.7.0'
+    compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.7.0'
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('org.springframework.security:spring-security-test')
+//    testCompile group: 'org.jmockit', name: 'jmockit', version: '1.33'
+    testCompile group: 'org.mockito', name: 'mockito-all', version: '1.10.19'
+}

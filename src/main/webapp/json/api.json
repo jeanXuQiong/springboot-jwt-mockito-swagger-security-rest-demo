@@ -1,0 +1,123 @@
+{"swagger": "2.0",
+  "info": {
+    "title": "系统API文档",
+    "contact": {
+      "name": "xuqiong",
+      "url": "localhost:8080",
+      "email": "xuqiongv5@163.com"
+    }
+  },
+  "host": "localhost:8080",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "user-controller",
+      "description": "用户信息操作相关接口"
+    }
+  ],
+  "paths": {
+    "/{name}/getUser": {
+      "get": {
+        "tags": [
+          "user-controller"
+        ],
+        "summary": "获取用户信息",
+        "operationId": "getUserUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "description": "用户名",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/UserDetails"
+            }
+          }
+        }
+      }
+    },
+    "/{name}/getUserPwd": {
+      "get": {
+        "tags": [
+          "user-controller"
+        ],
+        "summary": "获取用户密码",
+        "operationId": "getUserPwdUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "description": "用户名",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "GrantedAuthority": {
+      "type": "object",
+      "properties": {
+        "authority": {
+          "type": "string"
+        }
+      }
+    },
+    "UserDetails": {
+      "type": "object",
+      "properties": {
+        "accountNonExpired": {
+          "type": "boolean"
+        },
+        "accountNonLocked": {
+          "type": "boolean"
+        },
+        "authorities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GrantedAuthority"
+          }
+        },
+        "credentialsNonExpired": {
+          "type": "boolean"
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "password": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
